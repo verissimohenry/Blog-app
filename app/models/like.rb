@@ -1,10 +1,10 @@
 class Like < ApplicationRecord
   after_save :likes_count
   belongs_to :user, class_name: 'User', foreign_key: 'user_id'
-  belongs_to :post
+  belongs_to :posts
 
   def likes_count
-    post.increment!(:likes_counter)
+    posts.update!(:likes_counter)
   end
 
   private :likes_count
